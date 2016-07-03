@@ -11,11 +11,11 @@
 <body ng-controller="CommandeCtrl">
     <div>
         <h1>Générer des commandes</h1>
+        <button ng-click="truncateTable();">Truncate table</button>
         <form novalidate>
-            date_fin_fabrication: <input type="text" ng-model="addCommande.date_fin_fabrication" required /><br />
-            date_fin_preparation: <input type="text" ng-model="addCommande.date_fin_preparation" required /><br />
-            date_fin_expedition: <input type="text" ng-model="addCommande.date_fin_expedition" required /><br />
-            date_enregistrement: <input type="text" ng-model="addCommande.date_enregistrement" required /><br />
+            Nombre de données : <input type="number" min="1" max="1000" ng-model="addCommande.quantity" required><br />
+            Date minimal : <input type="date" ng-model="addCommande.dateMin" required><br />
+            Date maximal : <input type="date" ng-model="addCommande.dateMax" required><br />
             <input type="submit" ng-click="submit(addCommande)" value="Save" />
         </form>
     </div>

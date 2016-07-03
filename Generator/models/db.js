@@ -2,7 +2,7 @@ var mysql      = require('mysql');
 
 // define the connection
 var connection = mysql.createConnection({
-  host     : '192.168.10.161',
+  host     : '192.168.10.164',
   user     : 'root',
   password : 'root',
   database : 'administration'
@@ -21,9 +21,18 @@ exports.getAllCommande = function getAllCommande(callback) {
 };
 
 // insert table commande
-exports.addCommande = function addCommande(date_fin_fabrication, date_fin_preparation, date_fin_expedition, date_enregistrement, callback) {
-	request = "insert into commande (date_fin_fabrication, date_fin_preparation, date_fin_expedition, date_enregistrement) values (' " + date_fin_fabrication + "', '" + date_fin_preparation + "', '" + date_fin_expedition + "', '" + date_enregistrement + "');"
+exports.addCommande = function addCommande(dateList, callback) {
+	request = "INSERT INTO commande (date_enregistrement) VALUES ?";
 
+	connection.query(request, [dateList], function(err, rows, fields) {
+  		callback(err, rows);
+  	});
+};
+
+// truncate table commande
+exports.truncateCommande = function truncateCommande(callback) {
+	request = "TRUNCATE TABLE commande;";
+	
 	connection.query(request, function(err, rows, fields) {
   		callback(err, rows);
   	});

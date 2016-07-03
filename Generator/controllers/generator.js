@@ -3,6 +3,10 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     commandeData = require('./../models/db')
 
+function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
+
 // return the commande view  
 function getCommandeView(req, res){
     res.status(200).render('commande', {commandes : []});
@@ -19,6 +23,17 @@ function getAllCommande(req, res){
     });
 }
 
+// truncate table commande
+function truncateTable(req, res){
+    commandeData.truncateCommande(function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.status(200).send();
+        }
+    });
+}
+
 // add commande
 function addCommande(req, res){
     var body = "";
@@ -28,16 +43,24 @@ function addCommande(req, res){
     });
 
     req.on('end', function () {
-        console.log('body: ' + body);
         var jsonObj = JSON.parse(body);
 
-        commandeData.addCommande(jsonObj.date_fin_fabrication, jsonObj.date_fin_preparation, jsonObj.date_fin_expedition, jsonObj.date_enregistrement, function(err) {
+        var dateList = [];
+        for (var i = 0; i < jsonObj.quantity; i++) {
+            var insert = [];
+            insert.push(randomDate(new Date(jsonObj.dateMin), new Date(jsonObj.dateMax)));
+            dateList.push(insert);
+        }
+
+        commandeData.addCommande(dateList, function(err) {
             if (err) {
                 console.log(err);
             } else {
                 res.status(200).send();
             }
         });
+        
+
     })
 }
 
@@ -45,6 +68,8 @@ function addCommande(req, res){
 router.get('/', getCommandeView);
 router.get('/list', getAllCommande);
 router.post('/add', addCommande);
+router.get('/truncate', truncateTable);
+
 
 // export router
 module.exports = router;
