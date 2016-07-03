@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html ng-app="commandeApp">
+<head>
+    <meta charset="utf-8">   
+    <link href="/public/bootstrap.css" rel="stylesheet">
+    <link href="/public/commande.css" rel="stylesheet">
+    <title>Commandes</title>
+</head>
+
+<body ng-controller="CommandeCtrl">
+    <div>
+        <h1>Générer des commandes</h1>
+
+    </div>
+
+    <div>
+        <h1>Liste des commandes</h1>
+        <div ng-repeat="commande in data.commandes">
+            <p>{{ commande }}</p>
+        </div>
+    </div>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="/public/commande.js"></script>
+</body>
+</html>
