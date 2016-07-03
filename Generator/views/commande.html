@@ -11,7 +11,13 @@
 <body ng-controller="CommandeCtrl">
     <div>
         <h1>Générer des commandes</h1>
-
+        <form novalidate>
+            date_fin_fabrication: <input type="text" ng-model="addCommande.date_fin_fabrication" required /><br />
+            date_fin_preparation: <input type="text" ng-model="addCommande.date_fin_preparation" required /><br />
+            date_fin_expedition: <input type="text" ng-model="addCommande.date_fin_expedition" required /><br />
+            date_enregistrement: <input type="text" ng-model="addCommande.date_enregistrement" required /><br />
+            <input type="submit" ng-click="submit(addCommande)" value="Save" />
+        </form>
     </div>
 
     <div>
