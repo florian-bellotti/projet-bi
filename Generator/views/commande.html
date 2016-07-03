@@ -9,23 +9,35 @@
 </head>
 
 <body ng-controller="CommandeCtrl">
-    <div>
+    <section class="col-sm-offset-2 col-sm-8">
         <h1>Générer des commandes</h1>
-        <button ng-click="truncateTable();">Truncate table</button>
-        <form novalidate>
-            Nombre de données : <input type="number" min="1" max="1000" ng-model="addCommande.quantity" required><br />
-            Date minimal : <input type="date" ng-model="addCommande.dateMin" required><br />
-            Date maximal : <input type="date" ng-model="addCommande.dateMax" required><br />
-            <input type="submit" ng-click="submit(addCommande)" value="Save" />
+        <form novalidate class="col-sm-offset-1 col-sm-10 text-center">
+            <div class="form-group">
+                <label for="quantity">Nombre de données</label>
+                <input type="number" id="quantity" min="1" max="1000" ng-model="addCommande.quantity" required>
+            </div>
+            <div class="form-group">
+                <label for="dateMin">Date minimale</label>
+                <input type="date" id="dateMin" ng-model="addCommande.dateMin" required>
+            </div>
+            <div class="form-group">
+                <label for="dateMax">Date maximale</label>
+                <input type="date" id="dateMax" ng-model="addCommande.dateMax" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" ng-click="submit(addCommande)">Générer</button>
+                <button type="submit" class="btn btn-danger" ng-click="truncateTable()">Truncate</button>
+            </div>
+            
         </form>
-    </div>
+    </section>
 
-    <div>
+    <section class="col-sm-offset-1 col-sm-10">
         <h1>Liste des commandes</h1>
         <div ng-repeat="commande in data.commandes">
             <p>{{ commande }}</p>
         </div>
-    </div>
+    </section>
 
     <script src="node_modules/angular/angular.js"></script>
     <script src="/public/commande.js"></script>
