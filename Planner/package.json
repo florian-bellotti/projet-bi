@@ -2,7 +2,7 @@
   "name": "planner",
   "version": "0.1.0",
   "dependencies": {
-    "express": "^4.14.0"
+    "mysql": "^2.11.1"
   },
   "description": "Application permettant la planification de la fabrication, du conditionnement et l'expedition"
 }
