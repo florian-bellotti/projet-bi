@@ -2,7 +2,7 @@ var mysql      = require('mysql');
 
 // define the connection
 var connection = mysql.createConnection({
-  host     : '192.168.10.165',
+  host     : '192.168.10.166',
   user     : 'root',
   password : 'root',
   database : 'administration'
@@ -40,7 +40,7 @@ exports.getAllCommandeProduit = function getAllProduitCommande(callback) {
 
 // insert table commande
 exports.addCommande = function addCommande(insert, callback) {
-	request = "INSERT INTO commande (id, date_enregistrement) VALUES ?";
+	request = "INSERT INTO commande (id, id_client, date_enregistrement) VALUES ?";
 
 	connection.query(request, [insert], function(err, rows, fields) {
   	callback(err, rows);
@@ -48,10 +48,33 @@ exports.addCommande = function addCommande(insert, callback) {
 };
 
 // insert table commande_produit
-exports.addCommandeProduit = function addCommande(insert, callback) {
+exports.addCommandeProduit = function addCommandeProduit(insert, callback) {
   request = "INSERT INTO commande_produit (id_commande, quantite, id_produit) VALUES ?";
 
   connection.query(request, [insert], function(err, rows, fields) {
     callback(err, rows);
   });
+};
+
+// get table client
+exports.getClient = function getClient(callback) {
+  request = "SELECT * FROM client;"
+
+  connection.query(request, function(err, rows, fields) {
+    callback(err, rows);
+  });
+};
+
+// insert table client
+exports.addClient = function addClient(insert, callback) {
+  request = "INSERT INTO client (id, nom, prenom, sexe, age) VALUES ?";
+
+  if (insert !=  '') {
+    connection.query(request, [insert], function(err, rows, fields) {
+      callback(err, rows);
+    });
+  } else {
+    callback('', '');
+  }
+  
 };
