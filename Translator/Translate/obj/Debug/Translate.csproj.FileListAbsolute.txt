@@ -1,0 +1,10 @@
+E:\Projets\Business Intelligence\Translate\Translate\bin\Debug\Translate.exe.config
+E:\Projets\Business Intelligence\Translate\Translate\bin\Debug\Translate.exe
+E:\Projets\Business Intelligence\Translate\Translate\bin\Debug\Translate.pdb
+E:\Projets\Business Intelligence\Translate\Translate\bin\Debug\MySql.Data.dll
+E:\Projets\Business Intelligence\Translate\Translate\obj\Debug\Translate.csprojResolveAssemblyReference.cache
+E:\Projets\Business Intelligence\Translate\Translate\obj\Debug\Translate.exe
+E:\Projets\Business Intelligence\Translate\Translate\obj\Debug\Translate.pdb
+E:\Projets\BI\Translate\Translate\bin\Debug\Translate.exe.config
+E:\Projets\BI\Translate\Translate\obj\Debug\Translate.exe
+E:\Projets\BI\Translate\Translate\obj\Debug\Translate.pdb
