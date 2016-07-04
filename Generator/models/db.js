@@ -55,19 +55,3 @@ exports.addCommandeProduit = function addCommande(insert, callback) {
     callback(err, rows);
   });
 };
-
-
-// truncate table commande
-// exports.truncateCommande = function truncateCommande(callback) {
-// 	request1 = "SET FOREIGN_KEY_CHECKS = 0;";
-//   request2 = "TRUNCATE TABLE commande_produit, commande;";
-//   request3 = "SET FOREIGN_KEY_CHECKS = 1;";
-	
-// 	connection.query(request1, function(err, rows, fields) {
-//   	 connection.query(request2, function(err, rows, fields) {
-//       connection.query(request3, function(err, rows, fields) {
-//         callback(err, rows);
-//       });
-//     });
-//   });
-// };

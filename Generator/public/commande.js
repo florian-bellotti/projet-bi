@@ -17,18 +17,6 @@ commandeApp.controller("CommandeCtrl", function ($scope, $http) {
         });
     };
 
-    $scope.truncateTable = function() {
-        $http({
-            url: '/generator/truncate',
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'},
-        }).then(function successCallback(response) {
-            $scope.refresh();
-        }, function errorCallback(response) {
-            $scope.data.error = response;
-        });
-    };
-
     // get json response
     $scope.refresh = function() {
         $http({

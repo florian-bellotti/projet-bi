@@ -13,11 +13,13 @@ function randomNumber(min, max) {
 
 // return the commande view  
 function getCommandeView(req, res){
+    console.log(new Date() + " - Get Commande View");
     res.status(200).render('commande', {commandes : []});
 }
 
 // return all commandes 
 function getAllCommande(req, res){
+    console.log(new Date() + " - Get all Commande");
     commandeData.getAllCommande(function(err, commandeList) {
         if (err) {
             console.log(err);
@@ -27,19 +29,9 @@ function getAllCommande(req, res){
     });
 }
 
-// truncate table commande
-function truncateTable(req, res){
-    commandeData.truncateCommande(function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.status(200).send();
-        }
-    });
-}
-
 // add commande
 function addCommande(req, res){
+    console.log(new Date() + " - Add Commande");
     var body = "";
 
     req.on('data', function (chunk) {
@@ -83,12 +75,10 @@ function addCommande(req, res){
                     }
 
                     // insert in db
-                    console.log(dateList);
                     commandeData.addCommande(dateList, function(err) {
                         if (err) {
                             console.log(err);
                         } else {
-
                             commandeData.addCommandeProduit(commandeProduits, function(err) {
                                 if (err) {
                                     console.log(err);
@@ -108,8 +98,6 @@ function addCommande(req, res){
 router.get('/', getCommandeView);
 router.get('/list', getAllCommande);
 router.post('/add', addCommande);
-//router.get('/truncate', truncateTable);
-
 
 // export router
 module.exports = router;
