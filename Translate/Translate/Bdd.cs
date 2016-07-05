@@ -47,14 +47,4 @@ namespace Translate
             cmd.ExecuteNonQuery();
         }
     }
-
-    class Produit
-    {
-        public int id;
-        public string designation;
-        public string reference;
-        public float prix;
-        public string categorie;
-        public bool type;
-    }
 }
