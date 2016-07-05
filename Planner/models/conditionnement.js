@@ -2,14 +2,21 @@ var mysql      = require('mysql');
 
 // define the connection
 var connection = mysql.createConnection({
-  host     : '192.168.10.101',
+  host     : '192.168.10.102',
   user     : 'root',
   password : 'root',
-  database : 'fabrication'
+  database : 'conditionnement'
 });
 
 // open the connection
 connection.connect();
+
+function ifUndifened(value) {
+	if (value == undefined) {
+		value = null;
+	}
+	return value;
+}
 
 // count table ordonnancement
 exports.countOrdonnancement = function countOrdonnancement(callback) {
@@ -21,7 +28,7 @@ exports.countOrdonnancement = function countOrdonnancement(callback) {
 };
 
 // insert into table fabrication
-exports.addFabrication = function addFabrication(insert, callback) {
+exports.addConditionnement = function addConditionnement(insert, callback) {
   request = "INSERT INTO fabrication (id_produit_commande, id_ordonnancement) VALUES ?";
   inserts = [];
   query = [];
@@ -49,7 +56,7 @@ exports.addOrdonnancement = function addOrdonnancement(insert, callback) {
 
   for (var i in insert) {
     query = [];
-    query.push(insert[i].id, insert[i].debut_machine_A, insert[i].fin_machine_A, insert[i].debut_machine_B, insert[i].fin_machine_B, insert[i].debut_machine_C, insert[i].fin_machine_C, insert[i].id_produit, insert[i].quantite);
+    query.push(insert[i].id, ifUndifened(insert[i].debut_machine_A), ifUndifened(insert[i].fin_machine_A), ifUndifened(insert[i].debut_machine_B), ifUndifened(insert[i].fin_machine_B), ifUndifened(insert[i].debut_machine_C), ifUndifened(insert[i].fin_machine_C), ifUndifened(insert[i].id_produit), ifUndifened(insert[i].quantite));
     inserts.push(query);
   }
 
