@@ -22,16 +22,17 @@ namespace Translate
         private string path;
         private int firstSpace;
 
-        public Translator(string _path, int _categorie, int _StartID)
+        public Translator(int _StartID)
         {
             produits = new List<Produit>();
-            path = _path;
-            categorie = _categorie;
             number = _StartID;
         }
 
-        public void Translate()
+        public void Translate(string _path, int _categorie)
         {
+            path = _path;
+            categorie = _categorie;
+
             reader = new StreamReader(@"E:\Projets\BI\Datas\Before\" + path + ".txt");
             writer = new StreamWriter(@"E:\Projets\BI\Datas\After\" + path + ".txt", false);
 

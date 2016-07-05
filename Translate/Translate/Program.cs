@@ -10,18 +10,15 @@ namespace Translate
     {
         static void Main(string[] args)
         {
-            /*Produit produit = new Produit();
-            produit.designation = "test";
-            produit.reference = "afsegf";
-            produit.prix = 5.69f;
-            produit.categorie = "frigo";
-            produit.type = true;
-
-            Bdd bdd = new Bdd();
-            bdd.Add(produit);*/
-
-            Translator trans = new Translator("congelateur", 1, 1);
-            trans.Translate();
+            Translator trans = new Translator(1);
+            trans.Translate("congelateur", 1);
+            trans.Translate("refrigerateur", 2);
+            trans.Translate("preparation", 3);
+            trans.Translate("ustensiles", 4);
+            trans.Translate("servir", 5);
+            trans.Translate("rangement modulaire", 6);
+            trans.Translate("rechauffer au micro-ondes", 7);
+            trans.Translate("cuisiner au micro-ondes", 8);
 
             Console.ReadLine();
         }
