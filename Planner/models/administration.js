@@ -39,10 +39,22 @@ exports.getCommandProduitByCommandId = function getCommandProduitByCommandId(id,
 // update table commande
 exports.updateCommande = function updateCommande(query, callback) {
 	request = "UPDATE commande SET date_fin_fabrication = ? WHERE id = ?";
-	
+
 	for (var i in query) {
 		connection.query(request, [[query[i].date_fin_fabrication], [query[i].id]], function(err, rows, fields) {
 	  		callback(err);
 	  	});
 	}
 };
+
+// update table commande with conditionnement
+exports.updateCommandeCond = function updateCommandeCond(query, callback) {
+	request = "UPDATE commande SET date_fin_preparation = ? WHERE id = ?";
+	
+	for (var i in query) {
+		connection.query(request, [[query[i].date_fin_preparation], [query[i].id]], function(err, rows, fields) {
+	  		callback(err);
+	  	});
+	}
+};
+

@@ -29,7 +29,7 @@ exports.countOrdonnancement = function countOrdonnancement(callback) {
 
 // insert into table fabrication
 exports.addConditionnement = function addConditionnement(insert, callback) {
-  request = "INSERT INTO fabrication (id_produit_commande, id_ordonnancement) VALUES ?";
+  request = "INSERT INTO conditionnement (id_produit_commande, id_ordonnancement) VALUES ?";
   inserts = [];
   query = [];
 
