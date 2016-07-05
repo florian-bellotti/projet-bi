@@ -1,0 +1,8 @@
+{
+  "name": "planner",
+  "version": "0.1.0",
+  "dependencies": {
+    "mysql": "^2.11.1"
+  },
+  "description": "Application permettant la planification de la fabrication, du conditionnement et l'expedition"
+}
