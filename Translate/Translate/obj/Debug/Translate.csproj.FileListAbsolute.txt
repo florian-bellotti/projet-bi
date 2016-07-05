@@ -12,5 +12,8 @@ E:\Projets\BI\Translate\Translate\bin\Debug\MySql.Data.dll
 E:\Projets\BI\Translate\Translate\obj\Debug\Translate.exe
 E:\Projets\BI\Translate\Translate\obj\Debug\Translate.pdb
 E:\Projets\BI\projet-bi\Translate\Translate\bin\Debug\Translate.exe.config
+E:\Projets\BI\projet-bi\Translate\Translate\bin\Debug\Translate.exe
+E:\Projets\BI\projet-bi\Translate\Translate\bin\Debug\Translate.pdb
+E:\Projets\BI\projet-bi\Translate\Translate\bin\Debug\MySql.Data.dll
 E:\Projets\BI\projet-bi\Translate\Translate\obj\Debug\Translate.exe
 E:\Projets\BI\projet-bi\Translate\Translate\obj\Debug\Translate.pdb

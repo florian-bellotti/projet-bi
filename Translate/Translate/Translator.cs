@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Translate
@@ -17,17 +19,15 @@ namespace Translate
 
         private int categorie;
         private int number;
-        private int id_lot;
         private string path;
         private int firstSpace;
 
-        public Translator(string _path, int _categorie)
+        public Translator(string _path, int _categorie, int _StartID)
         {
             produits = new List<Produit>();
             path = _path;
             categorie = _categorie;
-            number = 1;
-            id_lot = 0;
+            number = _StartID;
         }
 
         public void Translate()
@@ -42,8 +42,20 @@ namespace Translate
                 {
                     line = line.Trim();
                     produit_lot = new Produit();
+                    produit_lot.id = number++;
                     produit_lot.reference = line.Split('\t')[0];
-                    produit_lot.designation = line.Split('\t')[1];
+                    line = line.Split('\t')[1];
+                    if(char.IsDigit(line[0]))
+                    {
+                        firstSpace = line.IndexOf(' ');
+                        produit_lot.quantite = int.Parse(line.Substring(0, firstSpace));
+                        produit_lot.designation = line.Substring(firstSpace + 1);
+                    }
+                    else
+                    {
+                        produit_lot.designation = line;
+                        produit_lot.quantite = 1;
+                    }
                     produit_lot.categorie = categorie;
                     produit_lot.type = true;
                 }
@@ -57,6 +69,7 @@ namespace Translate
                     foreach(Produit prod in produits)
                     {
                         WriteProduct(prod);
+                        WriteLots(produit_lot.id, prod.id, produit_lot.quantite);
                     }
 
                     produits = new List<Produit>();
@@ -64,8 +77,9 @@ namespace Translate
                 else
                 {
                     produit = new Produit();
+                    produit.id = number++;
                     firstSpace = line.IndexOf(' ');
-                    produit.reference = line.Substring(0, firstSpace - 1);
+                    produit.reference = line.Substring(0, firstSpace);
                     line = line.Substring(firstSpace + 1);
                     produit.designation = line.Split('-')[0].Trim();
                     produit.prix = float.Parse(line.Split('-')[1].Trim());
@@ -87,6 +101,15 @@ namespace Translate
                              produit.prix + ", " + 
                              produit.categorie + ", " + 
                              produit.type + ");"
+            );
+        }
+
+        private void WriteLots(int id_lot, int id_produit, int quantite)
+        {
+            writer.WriteLine("insert into lot (id_lot, id_produit, quantite) values (" +
+                              id_lot + ", " +
+                              id_produit + ", " +
+                              quantite + ");"
             );
         }
     }

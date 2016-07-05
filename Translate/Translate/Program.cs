@@ -20,7 +20,7 @@ namespace Translate
             Bdd bdd = new Bdd();
             bdd.Add(produit);*/
 
-            Translator trans = new Translator("congelateur", 1);
+            Translator trans = new Translator("congelateur", 1, 1);
             trans.Translate();
 
             Console.ReadLine();
