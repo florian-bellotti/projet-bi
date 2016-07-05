@@ -98,7 +98,7 @@ namespace Translate
             writer.WriteLine("insert into produit(designation, reference, prix, categorie, type) VALUES('" + 
                              produit.designation + "', '" +
                              produit.reference + "', " + 
-                             produit.prix + ", " + 
+                             produit.prix.ToString(CultureInfo.InvariantCulture) + ", " + 
                              produit.categorie + ", " + 
                              produit.type + ");"
             );
